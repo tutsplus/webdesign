@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta-->
+    <title>Smart icons | Iconic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- css-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/prettify.css">
+    <link rel="stylesheet" href="css/example.css"><!--[if IE 9]>
+    <link id="css-ie9" href="css/ie9.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <!--link(rel='import', href='/imports/iconic.html')--><!--[if lt IE 9]><script src="js/vendor/html5shiv.js"></script><![endif]-->
+    <script src="js/vendor/modernizr.custom.js"></script>
+    <!-- Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+  </head>
+  <body class="subpage smart-icons demo">
+    <section>
+      <article class="head">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center text-muted">
+              <h6>Proof of Concept</h6>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h4>Iconic can visualize data <br /></h4>
+              <p>Icons can take on a whole new meaning when they convey the exact information they intend to symbolize. With lightweight APIs directly encalpsulated in the SVG, icons can respond to and visualize real-time data.</p>
+              <p>
+                <button type="button" data-toggle="button" onclick="toggleAudio()" class="btn btn-primary">Play</button>
+              </p>
+              <p class="text-center"><img src="images/audio-spectrum-analyzer.svg" data-audiofile="optimistic-feelings.mp3" target="_blank" width="400" class="svg-inject"></p>
+              <p class="text-center"><i class="text-muted">This concept demo requires a browser with <a href="http://caniuse.com/audio-api", target="_blank">Web Audio API</a> support.</i></p>
+            </div>
+          </div>
+          <div class="row code-samples">
+            <div class="col-md-6 col-md-offset-3">
+              <h5>HTML</h5>
+              <pre class="prettyprint text-left">&lt;img src=&quot;audio-spectrum-analyzer.svg&quot; class=&quot;svg-inject&quot; data-audiofile='optimistic-feelings.mp3'&gt;</pre>
+              <h5>JS</h5>
+              <pre class="prettyprint text-left">$('.svg-inject').svgInject();</pre>
+              <h5>SVG (from audio-spectrum-analyzer.svg)</h5>
+              <pre class="prettyprint text-left pre-scrollable">&lt;svg id=&quot;audio-spectrum-analyzer&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xml:space=&quot;preserve&quot; height=&quot;320px&quot; width=&quot;210px&quot; version=&quot;1.1&quot; y=&quot;0px&quot; x=&quot;0px&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; viewBox=&quot;0 0 210 320&quot; onclick=&quot;toggleAudio()&quot;&gt;
+  &lt;g id=&quot;eq-bars&quot; height=&quot;320px&quot; width=&quot;210px&quot; fill=&quot;#010101&quot; transform=&quot;&quot;&gt;
+    &lt;rect x=&quot;00&quot; y=&quot;150&quot; height=&quot;20&quot; width=&quot;10&quot; /&gt;
+    &lt;rect x=&quot;20&quot; y=&quot;140&quot; height=&quot;40&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;40&quot; y=&quot;100&quot; height=&quot;120&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;60&quot; y=&quot;120&quot; height=&quot;80&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;80&quot; y=&quot;60&quot; height=&quot;200&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;100&quot; y=&quot;20&quot; height=&quot;280&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;120&quot; y=&quot;70&quot; height=&quot;180&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;140&quot; y=&quot;120&quot; height=&quot;80&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;160&quot; y=&quot;140&quot; height=&quot;40&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;180&quot; y=&quot;150&quot; height=&quot;20&quot; width=&quot;10&quot;  /&gt;
+    &lt;rect x=&quot;200&quot; y=&quot;155&quot; height=&quot;10&quot; width=&quot;10&quot;  /&gt;
+  &lt;/g&gt;
+
+  &lt;defs&gt;
+    &lt;style type=&quot;text/css&quot;&gt;&lt;![CDATA[
+      svg#audio-spectrum-analyzer {
+        margin: 0 auto;
+      }
+    ]]&gt;&lt;/style&gt;
+  &lt;/defs&gt;
+
+  &lt;script type=&quot;application/javascript&quot;&gt;&lt;![CDATA[
+    var context;
+    if (typeof AudioContext !== &quot;undefined&quot;) {
+      context = new AudioContext();
+    }
+    else if (typeof webkitAudioContext !== &quot;undefined&quot;) {
+      context = new webkitAudioContext();
+    }
+    else {
+      throw new Error('AudioContext not supported. :(');
+    }
+
+    var eqHeight = document.querySelector('svg#audio-spectrum-analyzer &gt; g#eq-bars').getAttribute('height').replace('px', '');
+    var bars = document.querySelectorAll('svg#audio-spectrum-analyzer rect');
+
+    var playing = false;
+
+    var audioFileUrl = document.querySelector('svg#audio-spectrum-analyzer').getAttribute('data-audiofile');
+    if (audioFileUrl === undefined) {
+      throw new Error('Audio File not defined');
+    }
+
+    var soundSource;
+    var fft;
+    var fftSmoothing = 0.6;
+    var fftMaxValue = 256;
+    var samples = 128;
+    var sampleIntervalID;
+    var ampFactor = 1.25;
+    var numBars = bars.length;
+    var soundBuffer;
+
+
+    var request = new XMLHttpRequest();
+    request.open(&quot;GET&quot;, audioFileUrl, true);
+    request.responseType = &quot;arraybuffer&quot;;
+
+    // Our asynchronous callback
+    request.onload = function () {
+      var audioData = request.response;
+
+      // The Audio Context handles creating source
+      // buffers from raw binary data
+      soundBuffer = context.createBuffer(audioData, true /*make mono*/ );
+    };
+    request.send();
+
+    function sampleAudio() {
+      var data = new Uint8Array(fft.frequencyBinCount);
+      fft.getByteFrequencyData(data);
+
+      // Calc bin size to sum freqs into.
+      // Carve off some of the high-end, lower energy bars (+2)
+      var bin_size = Math.floor(data.length / (numBars + 2));
+
+      // Sum up and average the samples into their bins
+      for (var i = 0; i &lt; numBars; ++i) {
+
+        // Sum this bin
+        var sum = 0;
+        for (var j = 0; j &lt; bin_size; ++j) {
+          sum += data[(i * bin_size) + j];
+        }
+
+        // Duck some of the low-end power
+        if (i === 0) {
+          sum = sum * 0.75;
+        }
+
+        // Calculate the average frequency of the samples in the bin
+        var average = sum / bin_size;
+        var scaled_average = Math.max(10, ((average / fftMaxValue) * eqHeight) * ampFactor);
+
+        // Update eq bar height
+        bars[i].setAttribute('height', scaled_average);
+
+        // Center bar
+        bars[i].setAttribute('y', (eqHeight - scaled_average) / 2);
+      }
+    }
+
+    function playSound() {
+      // create a sound source
+      soundSource = context.createBufferSource();
+
+      // Add the buffered data to our object
+      soundSource.buffer = soundBuffer;
+
+      // Create the FFT
+      fft = context.createAnalyser();
+      fft.smoothingTimeConstant = fftSmoothing;
+      fft.fftSize = samples;
+
+      soundSource.connect(fft);
+      fft.connect(context.destination);
+
+      soundSource.noteOn(context.currentTime);
+
+      // Start the FFT sampler
+      sampleIntervalID = setInterval(sampleAudio, 30);
+
+      playing = true;
+    }
+
+    function stopSound() {
+      // Stop the FFT sampler
+      clearInterval(sampleIntervalID);
+
+      if (soundSource) {
+        soundSource.noteOff(context.currentTime);
+      }
+      playing = false;
+    }
+
+    var toggleAudio = function () {
+      if (!playing) {
+        playing = true;
+        playSound();
+      }
+      else {
+        stopSound();
+        playing = false;
+      }
+    }
+
+    window.addEventListener('load', function () {
+      window.toggleAudio = toggleAudio;
+    }, false);
+
+  ]]&gt;&lt;/script&gt;
+
+&lt;/svg&gt;.
+
+</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <div class="menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="pager">
+              <li class="text-center"><a data-toggle="modal" href="#modal-kickstarter" class="btn btn-default btn-kick btn-round">Get Iconic</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-kickstarter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h2>Make it happen</h2>
+                  <p>We want you to have Iconic and we <em>definitely</em> want you to use it. There's just one thing you need to do to make this a reality. <a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="kick">Back Iconic on Kickstarter</a> and <a href="https://twitter.com/useiconic" class="tweet">spread the word</a>. OK, that's two things, but you get the point.</p>
+                  <p>In all seriousness, please help us get Iconic in your hands (figuratively). We know you'll love it.</p>
+                  <p>&nbsp;</p>
+                  <p><a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="btn btn-kick btn-round">Back us on Kickstarter</a></p>
+                </div>
+                <div class="col-sm-6 embed-kickstarter">
+                  <iframe frameborder="0" height="380" width="220" src="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web/widget/card.html"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/vendor/jquery.svginject.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/prettify.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/site.js"></script>
+
+  </body>
+</html>
+<!-- Localized -->

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta-->
+    <title>Smart icons | Iconic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- css-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/prettify.css">
+    <link rel="stylesheet" href="css/example.css"><!--[if IE 9]>
+    <link id="css-ie9" href="css/ie9.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <script src="js/vendor/modernizr.custom.js"></script>
+    <!-- Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+  </head>
+  <body class="subpage smart-icons demo">
+    <section>
+      <article class="head">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center text-muted">
+              <h6>Proof of Concept</h6>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h4>Iconic can take your temperature</h4>
+              <p>Iconic's SVGs are built with semantic structure in mind, making dynamic animations like these possible. Your icons now can have far more meaning than ever before.</p>
+              <div class="dropdown"><a data-toggle="dropdown" href="#" class="btn btn-primary">Set the temp&nbsp;<span class="caret"></span></a>
+                <ul role="menu" aria-labelledby="dropdownMenu1" class="dropdown-menu">
+                  <li><a href="#1.0" class="modifier">Hot</a></li>
+                  <li><a href="#0.66" class="modifier">Warm</a></li>
+                  <li><a href="#0.33" class="modifier">Chilly</a></li>
+                  <li><a href="#0.0" class="modifier">Cold</a></li>
+                </ul>
+              </div>
+              <p class="text-center"><img src="images/thermometer.svg" height="600" class="svg-inject thermometer"></p>
+            </div>
+          </div>
+          <div class="row code-samples">
+            <div class="col-md-6 col-md-offset-3">
+              <h5>HTML</h5>
+              <pre class="prettyprint text-left">&lt;img src=&quot;thermometer.svg&quot; class=&quot;svg-inject&quot;&gt;
+&lt;ul class=&quot;menu&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;Hot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#0.66&quot;&gt;Warm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#0.33&quot;&gt;Chilly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#0&quot;&gt;Cold&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              <h5>JS</h5>
+              <pre class="prettyprint text-left">$('.svg-inject').svgInject();</pre>
+              <h5>SVG (from thermometer.svg)</h5>
+              <pre class="prettyprint text-left pre-scrollable">&lt;svg version=&quot;1.0&quot; class=&quot;iconic-thermometer&quot;  xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot; width=&quot;40px&quot; height=&quot;128px&quot; viewBox=&quot;0 0 40 128&quot; enable-background=&quot;new 0 0 40 128&quot; xml:space=&quot;preserve&quot;&gt;
+  &lt;path class=&quot;iconic-thermometer-container&quot; d=&quot;M20,6c2.757,0,5,2.243,5,5v80.305v3.234l2.701,1.777C31.646,98.912,34,103.279,34,108c0,7.72-6.28,14-14,14s-14-6.28-14-14c0-4.721,2.354-9.088,6.298-11.684L15,94.539v-3.234V11C15,8.243,17.243,6,20,6 M20,0C13.935,0,9,4.935,9,11v80.305c-5.501,3.62-9,9.829-9,16.695c0,11.028,8.972,20,20,20c11.028,0,20-8.972,20-20c0-6.865-3.499-13.075-9-16.695V11C31,4.935,26.065,0,20,0L20,0z&quot;/&gt;
+  &lt;line class=&quot;iconic-thermometer-shaft iconic-thermometer-hot&quot; id=&quot;iconic-anim-thermometer-shaft&quot; fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot; stroke-miterlimit=&quot;10&quot; x1=&quot;20&quot; y1=&quot;108&quot; x2=&quot;20&quot; y2=&quot;11&quot; /&gt;
+  &lt;circle class=&quot;iconic-thermometer-well iconic-thermometer-hot&quot; cx=&quot;20&quot; cy=&quot;108&quot; r=&quot;12&quot; /&gt;
+  &lt;animate
+      id=&quot;shaft-animate&quot;
+      attributeName= &quot;y2&quot;
+      begin= &quot;indefinite&quot;
+      dur=&quot;1s&quot;
+      xlink:href=&quot;#iconic-anim-thermometer-shaft&quot;
+      fill=&quot;freeze&quot;
+      calcMode=&quot;spline&quot;
+      keySplines=&quot;0.42 0 0.58 1&quot;
+      keyTimes=&quot;0;1&quot;
+      restart=&quot;whenNotActive&quot;
+  /&gt;
+
+  &lt;script type=&quot;text/ecmascript&quot;&gt;
+  &lt;![CDATA[
+
+      var shaft = document.querySelector('#iconic-anim-thermometer-shaft');
+      var well = document.querySelector('.iconic-thermometer-well');
+      var yOrigin2 = parseFloat(shaft.getAttribute('y2'));
+      var yOrigin1 = parseFloat(shaft.getAttribute('y1'));
+      var yPos = yOrigin2;
+      var tempClass;
+
+      window.addEventListener('hashchange', function() {
+        var hash = window.location.hash.substr(1);
+        goto(hash);
+      }, false);
+
+      function goto(amount) {
+        var shaftAnim = document.querySelector('#shaft-animate');
+
+        shaft.setAttribute('y2', yPos)
+
+        amount = parseFloat(amount)
+        if( isNaN( amount ) ) return;
+
+        if(amount&gt;.9) {
+          tempClass=&quot;iconic-thermometer-hot&quot;;
+        } else if(amount&gt;.5) {
+          tempClass=&quot;iconic-thermometer-warm&quot;;
+        } else if(amount&gt;.2) {
+          tempClass=&quot;iconic-thermometer-chilly&quot;;
+        } else {
+          tempClass=&quot;iconic-thermometer-cold&quot;;
+        }
+
+        amount = 1 - amount;
+        amount = Math.min(Math.max(0, amount), 1);
+
+        var ry = ( amount * ( yOrigin1-yOrigin2 ) ) + yOrigin2;
+
+        /*
+         * Unfortunately, Safari doesn't make life easy on us. We need to remove and re-initialize
+         * the animation element for animations to start from the last end point.
+         */
+        var ns =  shaftAnim.cloneNode(true);
+        ns.setAttribute( 'from', yPos )
+        ns.setAttribute( 'to', ry );
+
+        shaftAnim.parentNode.replaceChild(ns, shaftAnim);
+
+        well.setAttribute('class', 'iconic-thermometer-well ' + tempClass);
+        shaft.setAttribute('class', 'iconic-thermometer-shaft ' + tempClass);
+        ns.beginElement();
+        yPos = ry;
+
+      }
+  ]]&gt;
+  &lt;/script&gt;
+&lt;/svg&gt;.
+
+</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <div class="menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="pager">
+              <li class="text-center"><a data-toggle="modal" href="#modal-kickstarter" class="btn btn-default btn-kick btn-round">Get Iconic</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-kickstarter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h2>Make it happen</h2>
+                  <p>We want you to have Iconic and we <em>definitely</em> want you to use it. There's just one thing you need to do to make this a reality. <a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="kick">Back Iconic on Kickstarter</a> and <a href="https://twitter.com/useiconic" class="tweet">spread the word</a>. OK, that's two things, but you get the point.</p>
+                  <p>In all seriousness, please help us get Iconic in your hands (figuratively). We know you'll love it.</p>
+                  <p>&nbsp;</p>
+                  <p><a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="btn btn-kick btn-round">Back us on Kickstarter</a></p>
+                </div>
+                <div class="col-sm-6 embed-kickstarter">
+                  <iframe frameborder="0" height="380" width="220" src="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web/widget/card.html"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/vendor/jquery.svginject.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/prettify.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/site.js"></script>
+  </body>
+</html>
+<!-- Localized -->

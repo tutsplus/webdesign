@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Responsive Navigation Demo: Toggle and Slide Pattern</title>
+
+<meta charset="utf-8">
+<meta name="description" content="" />
+
+<link rel="stylesheet" href="css/toggle-slide.css">
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery-submenu.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+<script src="js/html5.js" type="text/javascript"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+	<header>
+		<div class="container">
+			<img class="logo" src="images/logo.png" width="252" height="46" />
+			<label class="btn" for="toggle" onclick>Menu</label>
+			<input id="toggle" type="checkbox" />
+			
+			<nav>
+				<ul id="nav">
+					<li><a href="">Back to Post</a></li>
+					<li><a href="toggle.html">Toggle</a></li>
+					<li><a href="multi-toggle.html">Multi-Toggle</a></li>
+					<li class="current"><a href="toggle-slide.html" class="contains-sub slide">Toggle &amp; Slide </a>
+						<ul class="submenu">
+							<li><a href="toggle-slide.html" id="back" class="contains-sub"> Back</a></li>
+							<li><a href="toggle-slide.html">Toggle &amp; Slide Sublink 1</a></li>
+							<li><a href="toggle-slide.html">Toggle &amp; Slide Sublink 2</a></li>
+							<li><a href="toggle-slide.html">Toggle &amp; Slide Sublink 3</a></li>
+						</ul>
+					</li>
+					<li id="close"><label for="toggle">Close</label></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div class="container main-content">
+
+		<div id="content">
+			<h2>Toggle and Slide Pattern</h2>
+			<p>This pattern is similar to the multi-toggle pattern in that we're hiding the submenu by default. It differs mainly in how the submenu is revealed when the top level link is clicked.</p>
+			<p>Instead of the submenu opening in an accordion pattern, here it will slide in from the left. This will mostly be accomplished with css, though we'll extend the jQuery we're using just a bit.</p>
+			
+			<h3>The HTML</h3>
+			<p>The html below is similar to the html used in the multi-toggle pattern. The difference is the submenu has been moved to the Toogle &amp; Slide menu item. Also note the additional "Back" menu item added to the submenu.</p>
+			
+			<pre>
+&lt;label class="btn" for="toggle" onclick>Menu&lt;/label>
+&lt;input id="toggle" type="checkbox" />
+
+&lt;nav&gt;
+  &lt;ul id="nav"&gt;
+    &lt;li&gt;&lt;a href="">Back to Post&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="toggle.html" class="contains-sub multi"&gt;Toggle&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="multi-toggle.html"&gt;Multi-Toggle&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="current"&gt;&lt;a href="toggle-slide.html"&gt;Toggle &amp; Slide&lt;/a&gt;
+      &lt;ul class="submenu" class="contains-sub slide"&gt;
+        &lt;li&gt;&lt;a href="toggle-slide.html" id="back" class="contains-sub"&gt;Back&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="toggle-slide.html"&gt;Toggle &amp; Slide Sublink 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="toggle-slide.html"&gt;Toggle &amp; Slide Sublink 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="toggle-slide.html"&gt;Toggle &amp; Slide Sublink 3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li id="close"&gt;&lt;label for="toggle"&gt;Close&lt;/label&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+			</pre>
+			
+			<h3>The Submenu CSS</h3>
+			<p>Much of the css is once again the same as was used for the initial toggle pattern. The submenu, while similar to the multi-toggle submenu, is will look different. First I changed the character on the :after pseudo element to be a right facing triangle instead of downward pointing.</p>
+			<p>To accomplish the slide, the submenu is initially positioned to the left at -100%. When it has the .open class applied it's position is changed to 0. The transitions will create the slide effect.</p>
+			<p>To make it clearer a new menu is sliding on top of the current one the color is made slightly lighter. Finally the back link gets a left facing triangle, this time on it's :before pseudo selector.</p>
+			
+			<pre>
+.slide:after {
+  content: " \0025B6";
+  font-size: 0.5em;
+}
+
+.submenu {
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  -webkit-transition: 0.75s;
+     -moz-transition: 0.75s;
+      -ms-transition: 0.75s;
+       -o-transition: 0.75s;
+          transition: 0.75s;
+}
+
+.submenu.open {
+  left: 0;
+}
+
+.submenu.open a {
+  background: #555;
+}
+
+#back:before {
+  content: " \0025C0";
+  font-size: 0.5em;
+}
+			</pre>
+			
+			<h3>The CSS in Media Queries</h3>
+			<p>As with the other two patterns, the media queries are used to switch the menu from vertical to horizontal and to properly display the submenu.</p>
+						
+			<h3>The Javascript to Open/Close the Submenu</h3>
+			<p>The jQuery below is familiar to what was in the mutli-toggle pattern. Once again it starts by finding the link with the class of accordion and adding or removing the .open class to it's sibling.</p>
+			<p>The submenu needs it's own click function to close. The new function works the same way, though it acts on a parent element instead of a sibling.</p>
+			<p><strong>Note:</strong> We really only need to add the .open class in the first function and remove it in the 2nd function. When the submenu is open it will cover the main menu. We'll only ever click back when the open class is present. Similarly we'll only ever click the original link when the class isn't present.</p>
+			<p>I included the both in the first function, since the same function is used to control the multi-toggle and I included both in the 2nd for the possibility of further additions.</p>
+			
+			<pre>
+$(document).ready(function() {
+  $('a.contains-sub').click(function() {
+    if($(this).siblings('ul').hasClass('open')){
+      $(this).siblings('ul').removeClass('open');
+    } else {
+      $(this).siblings('ul').addClass('open');
+    }
+    return false;
+  });
+
+  $('ul.submenu a.contains-sub').click(function() {
+    if($(this).offsetParent('ul').hasClass('open')){
+      $(this).offsetParent('ul').removeClass('open');
+    } else {
+      $(this).offsetParent('ul').addClass('open');
+    }
+    return false;
+  });
+});				
+			</pre>
+		</div>	
+
+		<div id="sidebar">
+			<h2>Additional Resources</h2>
+			<ul>
+				<li><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/">Responsive Navigation Patterns</a></li>
+				<li><a href="http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/">Complex Navigation Patterns for Responsive Design</a></li>
+				<li><a href="http://www.vanseodesign.com/web-design/responsive-navigation-patterns/">7 Responsive Navigation Patterns</a></li>
+				<li><a href="http://friendlymachine.net/posts/2012/navigation-patterns-responsive-design">Navigation Patterns in Responsive Design</a></li>
+			</ul>
+			
+			<h2>Examples</h2>
+			<p>The sites below use the toggle &amp; slide pattern for their navigation. It's a less popular pattern, though it really isn't any harder to implement than the multi-toggle.</p>
+			<ul>
+				<li><a href="http://www.sony.com/index.php">Sony</a></li>
+				<li><a href="http://www.currys.co.uk/gbuk/index.html">Curry's</a> used at bottom of page</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<section class="subfooter">
+		<div class="container">
+			<aside class="tuts-network">
+				<h4>Tuts+ Network</h4>
+				<ul>
+			    <li><a href="http://psd.tutsplus.com/"target="_blank" class="psdtuts">Psdtuts+</a></li>
+					<li><a href="http://net.tutsplus.com/"target="_blank" class="nettuts">Nettuts+</a></li>
+					<li><a href="http://vector.tutsplus.com/"target="_blank" class="vectortuts">Vectortuts+</a></li>
+			  </ul>
+			</aside>
+
+			<aside class="tuts-network">
+				<ul>
+					<li><a href="http://audio.tutsplus.com/"target="_blank" class="audiotuts">Audiotuts+</a></li>
+					<li><a href="http://photo.tutsplus.com/" target="_blank" class="phototuts">Phototuts+</a></li>
+					<li><a href="http://mobile.tutsplus.com/" target="_blank" class="mobiletuts">Mobiletuts+</a></li>
+					<li><a href="http://webdesign.tutsplus.com/" target="_blank" class="webdesigntuts">Webdesigntuts+</a></li>
+				</ul>
+			</aside>
+			
+			<aside class="tuts-network">
+				<ul>
+					<li><a href="http://wp.tutsplus.com/" target="_blank" class="wptuts">Wptuts+</a></li>
+					<li><a href="http://ae.tutsplus.com/" target="_blank" class="aetuts">Aetuts+</a></li>
+					<li><a href="http://cg.tutsplus.com/" target="_blank" class="cgtuts">Cgtuts+</a></li>  					
+				</ul>
+			</aside>
+		</div>
+	</section>
+
+	<div id="footer">
+		<div class="container">
+		<p class="credit">Demo by Steven Bradley &mdash; <a href="http://www.vanseodesign.com">Vanseo Design</a></p>
+		</div>
+	</div>
+
+</body>
+</html>

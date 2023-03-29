@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Responsive Navigation Demo: Toggle Pattern</title>
+
+<meta charset="utf-8">
+<meta name="description" content="" />
+
+<link rel="stylesheet" href="css/toggle.css">
+
+<!--[if lt IE 9]>
+<script src="js/html5.js" type="text/javascript"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+	<header>
+		<div class="container">
+			<img class="logo" src="images/logo.png" width="252" height="46" />
+
+			<label class="btn" for="toggle" onclick>Menu</label>
+			<input id="toggle" type="checkbox" />
+			
+			<nav>
+				<ul id="nav">
+					<li><a href="">Back to Post</a></li>
+					<li class="current"><a href="toggle.html">Toggle</a></li>
+					<li><a href="multi-toggle.html">Multi-Toggle</a></li>
+					<li><a href="toggle-slide.html">Toggle &amp; Slide</a></li>
+					<li id="close"><label for="toggle">Close</label></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div class="container main-content">
+
+		<div id="content">
+			<h2>Toggle Pattern</h2>
+			<p>The toggle pattern is a good way to solve the problem of space at the top of the page. By default your menu isn't visible on small screens. In its place is a single button or link that when clicked reveals the menu.</p>
+			<p>This pattern is easy to scale as your menu grows and its only real downside is that your menu isn't always visible to communicate what your site is about. There also isn't yet a single standard for the toggle, though a button with the word "Menu" or with 3 horizontal lines are most common.</p>
+			<p>Adapted from a <a href="http://www.netmagazine.com/tutorials/build-smart-mobile-navigation-without-hacks">method presented by Aaron Gustafson</a>.</p>
+			
+			<h3>The HTML</h3>
+			<p>The html to create the toggle and menu is fairly straightforward. Since we're using <a href="http://css-tricks.com/the-checkbox-hack/">the checkbox hack</a> for the toggle it's structure is a form label and input with a type of checkbox. The menu itself is a common list, with one exception. The last item in the list is a label that triggers the checkbox.</p>
+			
+			<pre>
+&lt;label class="btn" for="toggle">Menu&lt;/label>
+&lt;input id="toggle" type="checkbox" />
+
+&lt;nav&gt;
+  &lt;ul id="nav"&gt;
+    &lt;li&gt;&lt;a href="">Back to Post&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="current"&gt;&lt;a href="toggle.html"&gt;Toggle&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="multi-toggle.html"&gt;Multi-Toggle&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="toggle-slide.html"&gt;Toggle &amp; Slide&lt;/a&gt;&lt;/li&gt;
+    &lt;li id="close"&gt;&lt;label for="toggle"&gt;Close&lt;/label&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+			</pre>
+			
+			<h3>The Default CSS</h3>
+			<p>Below is the default css for the toggle and menu in the unchecked state. The main things to note are the position and z-index of the label (.btn) and the list (#nav) and the height and line-height of the links (#nav a). Note too that the checkbox is positioned off the page since we don't need to see it.</p>
+			
+			<pre>
+.btn {
+  position: absolute;
+	top: 1.25em;
+	right: 5%;
+  z-index: 100;
+  padding: 0.25em 2%;
+  color: #fff;
+  border-radius: 0.25em;
+  background-color: #5b5756;
+  background-image: -webkit-linear-gradient(top, #6b6766, #5b5756);
+  background-image:    -moz-linear-gradient(top, #6b6766, #5b5756);
+  background-image:     -ms-linear-gradient(top, #6b6766, #5b5756);
+  background-image:      -o-linear-gradient(top, #6b6766, #5b5756);
+  background-image:         linear-gradient(top, #6b6766, #5b5756);
+}
+
+.btn:hover {
+  background-color: #7b7776;
+  background-image: -webkit-linear-gradient(top, #8b8786, #7b7776);
+  background-image:    -moz-linear-gradient(top, #8b8786, #7b7776);
+  background-image:     -ms-linear-gradient(top, #8b8786, #7b7776);
+  background-image:      -o-linear-gradient(top, #8b8786, #7b7776);
+  background-image:         linear-gradient(top, #8b8786, #7b7776);
+}
+
+#toggle {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+#nav {
+  position: absolute;
+  z-index: 10;
+  top: 5em;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+
+#nav a {
+  height: 0;
+  line-height: 0;
+  display: block;
+  border-bottom-width: 0;
+  background: #444;
+  padding: 0 0 0 5%;
+  overflow: hidden;
+  color:#fff;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+       -o-transition: 0.5s;
+          transition: 0.5s;
+}
+			</pre>
+			
+			<h3>The CSS to Toggle the Menu</h3>
+			<p>There are a few things to note to understand how the toggle works. The :checked selector uses a tilde to target a sibling element, in this case nav. From there we target descendants of the nav element.</p
+			<p>The list (#nav) has been given a z-index of 101 so that it sits on top of everything. Inside the list the the #close label is set to sit below the other menu items and then set to stretch far above and below the rest of the menu items. By doing this you either click on a link in the menu or the close label (everything else) which unchecks the checkbox.</p>
+			<p>The menu becomes visible by giving the links a height and a line-height. They're both set to 0 by default which hides them. The transition set above on the links leads to the animation effect.</p>
+			
+			<pre>
+#toggle:checked ~ nav #nav {
+  z-index: 101;
+  -webkit-box-shadow: 0px 3px 10px 3px #777;
+     -moz-box-shadow: 0px 3px 10px 3px #777;
+      -ms-box-shadow: 0px 3px 10px 3px #777;
+       -o-box-shadow: 0px 3px 10px 3px #777;
+          box-shadow: 0px 3px 10px 3px #777;
+}
+
+#toggle:checked ~ nav #nav a {
+  line-height: 3em;
+  height: 3em;
+  border-bottom: 1px solid #999;
+  position: relative;
+  z-index: 1;
+	
+#toggle:checked ~ nav #nav a:hover {
+  background: #555;
+}
+
+#toggle:checked ~ nav #nav #close {
+  position: relative;
+  z-index: 0;
+}
+
+#toggle:checked ~ nav #nav #close label {
+  background: transparent;
+  border-bottom: 0;
+  position: absolute;
+  top: -101em;
+  bottom: -101em;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+			</pre>
+			
+			<h3>The CSS in Media Queries</h3>
+			<p>Once space allows we convert the menu from a vertical list of links to a horizontal list of links. First the toggle (.btn) is to display: none.</p>
+			<p>Next we adjust the menu position and remove the shadow. We set list items to display inline and float them to the left. Links are floated to the right.</p>
+			<p>Since we no longer need the #close menu item we set its display to none as well. We also need to adjust the height and line-height of the link as well as the padding around them. Finally we remove the bottom border.</p>
+			
+			<pre>
+@media screen and (min-width: 48em) {
+  .btn {display: none;}
+	
+  #toggle:checked ~ nav #nav,
+  #nav {
+    top: 2em;
+    right: 2%;
+    left: 35%;
+    -webkit-box-shadow: 0 0 0 0;
+       -moz-box-shadow: 0 0 0 0;
+        -ms-box-shadow: 0 0 0 0;
+         -o-box-shadow: 0 0 0 0;
+            box-shadow: 0 0 0 0;
+		
+    li {display: inline; float: left;}
+    li.current a {color: #7b7776;}
+		
+    a {
+      line-height: 1em;
+      height: 1em;
+      display: inline;
+      float: right;
+      background: transparent;
+      padding: 0 1.15em;
+      border-bottom: 0
+    }
+		
+    #close {display: none;}
+  }
+}
+			</pre>
+
+			<h3>Checkbox fix for iOS and Android</h3>
+			<p>iOS prior to version 6.0 and Android 4.1.2 both have issues with the checkbox hack. Both have <a href="http://timpietrusky.com/advanced-checkbox-hack">simple if unusual fixes</a>. For iOS &lt; 6.0 we add an empty onclick to the label. For Android we add a fake animation on the body element.</p>
+			
+			<pre>
+&lt;label class="btn" for="toggle-1" onclick>Menu&lt;/label>
+
+body {
+  -webkit-animation: bugfix infinite 1s;
+}
+
+@-webkit-keyframes bugfix { 
+  from {padding:0;} 
+  to {padding:0;} 
+}
+
+			</pre>
+		</div>	
+
+		<div id="sidebar">
+			<h2>Additional Resources</h2>
+			<ul>
+				<li><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/">Responsive Navigation Patterns</a></li>
+				<li><a href="http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/">Complex Navigation Patterns for Responsive Design</a></li>
+				<li><a href="http://www.vanseodesign.com/web-design/responsive-navigation-patterns/">7 Responsive Navigation Patterns</a></li>
+				<li><a href="http://friendlymachine.net/posts/2012/navigation-patterns-responsive-design">Navigation Patterns in Responsive Design</a></li>
+			</ul>
+			
+			<h2>Examples</h2>
+			<p>The sites below use the toggle pattern for their global navigation</p>
+			<ul>				
+				<li><a href="http://www.starbucks.com/">Starbucks</a></li>
+				<li><a href="http://mobilewebbestpractices.com/">Mobile Web Best Practices</a></li>
+				<li><a href="http://fringewebdevelopment.com/">Fringe Web Development</a></li>
+				<li><a href="http://www.tuj.ac.jp/index.html">Temple University (Japan Campus)</a></li>
+				<li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></li>
+				<li><a href="http://foundation.zurb.com/">Zurb</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<section class="subfooter">
+		<div class="container">
+			<aside class="tuts-network">
+				<h4>Tuts+ Network</h4>
+				<ul>
+			    <li><a href="http://psd.tutsplus.com/"target="_blank" class="psdtuts">Psdtuts+</a></li>
+					<li><a href="http://net.tutsplus.com/"target="_blank" class="nettuts">Nettuts+</a></li>
+					<li><a href="http://vector.tutsplus.com/"target="_blank" class="vectortuts">Vectortuts+</a></li>
+			  </ul>
+			</aside>
+
+			<aside class="tuts-network">
+				<ul>
+					<li><a href="http://audio.tutsplus.com/"target="_blank" class="audiotuts">Audiotuts+</a></li>
+					<li><a href="http://photo.tutsplus.com/" target="_blank" class="phototuts">Phototuts+</a></li>
+					<li><a href="http://mobile.tutsplus.com/" target="_blank" class="mobiletuts">Mobiletuts+</a></li>
+					<li><a href="http://webdesign.tutsplus.com/" target="_blank" class="webdesigntuts">Webdesigntuts+</a></li>
+				</ul>
+			</aside>
+			
+			<aside class="tuts-network">
+				<ul>
+					<li><a href="http://wp.tutsplus.com/" target="_blank" class="wptuts">Wptuts+</a></li>
+					<li><a href="http://ae.tutsplus.com/" target="_blank" class="aetuts">Aetuts+</a></li>
+					<li><a href="http://cg.tutsplus.com/" target="_blank" class="cgtuts">Cgtuts+</a></li>  					
+				</ul>
+			</aside>
+		</div>
+	</section>
+
+	<div id="footer">
+		<div class="container">
+		<p class="credit">Demo by Steven Bradley &mdash; <a href="http://www.vanseodesign.com">Vanseo Design</a></p>
+		</div>
+	</div>
+
+</body>
+</html>

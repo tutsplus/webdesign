@@ -1,0 +1,50 @@
+@import "jquery.ui.slider";
+@import "jquery.ui.theme";
+
+.ui-corner-all { border-radius: 2em; background: #ecf0f1; border: none; }
+.ui-slider-horizontal .ui-slider-range-min {
+border-radius: 2em;
+background: #1bbc9b;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: #16a086; cursor:pointer; border: none}
+
+* {
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	font: 100%/1.5em Helvetica,Arial,sans-serif;
+	color: white;
+	background: #2d3e50;
+}
+
+.container {
+	width: 90%;
+	max-width: 40em;
+	margin: 0 auto;
+	padding: 3em 0;
+	
+	p {
+		font-size: 2em;
+		color: #ecf0f1
+	}
+
+	.content {
+		color: #6986a3;
+		padding-top: 15%;
+	}
+	
+	footer {
+		font-size: .8em;
+		padding: 50% 0 0 0;
+		color: #fff;
+		
+
+	}
+	
+}
+
+		a, a:visited {
+			color: #bec3c7;
+		}

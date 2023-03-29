@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+	<head>
+	
+		<meta charset="utf-8" />
+		
+		<meta name="viewport" content="width=device-width" />
+		
+		<title>Foundation 4 | Contact Form</title>
+		
+		<link rel="stylesheet" href="css/foundation.css" />
+		
+		<link rel="stylesheet" href="css/app2.css" />
+		
+		<script src="js/vendor/custom.modernizr.js"></script>
+	
+	</head>
+	
+	<body>
+	
+		<ol class="joyride-list" data-joyride>
+		  <li data-id="firstStop" data-text="Go">
+		    <p>Let's get started, here we have an intro.</p>
+		  </li>
+		  <li data-id="numero1" data-class="custom so-awesome" data-text="Next">
+		    <h4>First Stop</h4>
+		    <p>Here we use the new interchange function to change images based on screen size.</p>
+		  </li>
+		  <li data-id="numero2" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+		    <h4>Second Stop</h4>
+		    <p>We are using pricing tables here to display a list of services from a hosting company.</p>
+		  </li>
+		  <li data-id="numero3" data-button="Next" data-options="tipLocation:top;tipAnimation:fade">
+		    <h4>Third Stop</h4>
+		    <p>This is just a link but it opens a modal with a standard table inside, exciting eh?</p>
+		  </li>
+		  <li data-button="End">
+		    <h4>End Of The Line</h4>
+		    <p>Our tour ends here, please remember to take all your belongings with you on your way to the exit.</p>
+		  </li>
+		</ol>
+	
+		<div class="row">
+		
+			<div class="large-10 columns large-centered">
+			
+				<h2 class="titled">Our Products</h2>
+				
+				<div class="row">
+		
+					<div class="large-6 columns">
+					
+						<div class="panel">
+							
+							<p id="firstStop">We have a simple selection of hosting packages for you to choose from, these will work fantastically for any company. With ultra fast mySQL database connections, content management systems really fly. Add to this 24/7 customer support and 99.9% uptime and you've got a great hosting package.</p>
+							
+						</div>
+					
+					</div>
+					
+					<div class="large-6 columns">
+					
+						<img id="numero1" style="width: 100%;" src="http://foundation.zurb.com/docs/img/demos/interchange/small.jpg" data-interchange="[http://foundation.zurb.com/docs/img/demos/interchange/smallest.jpg, (default)], [http://foundation.zurb.com/docs/img/demos/interchange/smallest.jpg, (screen and (max-width: 568px))], [http://foundation.zurb.com/docs/img/demos/interchange/small.jpg, (small)], [http://foundation.zurb.com/docs/img/demos/interchange/med.jpg, (medium)], [http://foundation.zurb.com/docs/img/demos/interchange/large.jpg, (large)]">
+						<br/><br/><br/>
+					
+					</div>
+					
+				</div>
+		
+				<div class="row">
+				
+					<div class="large-4 columns">
+						
+						<ul class="pricing-table" id="numero2">
+						
+						  <li class="title">Startup</li>
+						  
+						  <li class="price">$9.95</li>
+						  
+						  <li class="description">An awesome package to get any company onto their feet. With instant setup and magic money making plugins.</li>
+						  
+						  <li class="bullet-item">1 Database</li>
+						  
+						  <li class="bullet-item">5GB Storage</li>
+						  
+						  <li class="bullet-item">20 Users</li>
+						  
+						  <li class="cta-button"><a class="button round" href="#">Buy Now</a></li>
+						  
+						</ul>
+					
+					</div>
+					
+					<div class="large-4 columns">
+						
+						<ul class="pricing-table">
+						
+						  <li class="title">Enterprise</li>
+						  
+						  <li class="price">$16.95</li>
+						  
+						  <li class="description">If your a small to medium company and need a little more room, then the extra space will be ideal for you.</li>
+						  
+						  <li class="bullet-item">5 Database</li>
+						  
+						  <li class="bullet-item">50GB Storage</li>
+						  
+						  <li class="bullet-item">50 Users</li>
+						  
+						  <li class="cta-button"><a class="button round" href="#">Buy Now</a></li>
+						  
+						</ul>
+					
+					</div>
+					
+					<div class="large-4 columns">
+
+						<ul class="pricing-table">
+						
+						  <li class="title">Global Corporation</li>
+						  
+						  <li class="price">$24.95</li>
+						  
+						  <li class="description">This is for big corporations who have huge operations, multiple sites, many users and massive storage options.</li>
+						  
+						  <li class="bullet-item">10 Database</li>
+						  
+						  <li class="bullet-item">100GB Storage</li>
+						  
+						  <li class="bullet-item">100 Users</li>
+						  
+						  <li class="cta-button"><a class="button round" href="#">Buy Now</a></li>
+						  
+						</ul>
+					
+					</div>
+				
+				</div>
+				
+				<h6 class="titled"><a href="#" id="numero3" data-reveal-id="myModal">See in-depth comparison</a></h6>
+					
+			</div>
+		
+		</div>
+		
+		<div id="myModal" class="reveal-modal">
+		
+			<h4>Detailed Plans</h4>
+		
+			<table>
+			  <thead>
+			    <tr>
+			      <th width="200">Startup</th>
+			      <th width="200">Enterprise</th>
+			      <th width="200">Global Corporation</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  
+			  	<tr>
+			  		<td>1 Database</td>
+			  		<td>5 Database</td>
+			  		<td>10 Database</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>5GB Storage</td>
+			  		<td>50GB Storage</td>
+			  		<td>100GB Storage</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>20 Users</td>
+			  		<td>50 Users</td>
+			  		<td>100 Users</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>Linux</td>
+			  		<td>Linux</td>
+			  		<td>Windows</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>Unlimited Pages</td>
+			  		<td>Unlimited Pages</td>
+			  		<td>Unlimited Pages</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>Unlimited Domains</td>
+			  		<td>Unlimited Domains</td>
+			  		<td>Unlimited Domains</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>50GB Bandwidth</td>
+			  		<td>100GB Bandwidth</td>
+			  		<td>200GB Bandwidth</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>No Phone Support</td>
+			  		<td>24/7 Phone Support</td>
+			  		<td>24/7 Phone Support</td>
+			  	</tr>
+			  	
+			  	<tr>
+			  		<td>No Backups</td>
+			  		<td>50GB Backups</td>
+			  		<td>100GB Backups</td>
+			  	</tr>
+			  </tbody>
+			</table>
+		<a class="close-reveal-modal">&#215;</a>
+		</div>
+		
+		<script src="js/vendor/jquery.js"></script>
+		
+		<script src="js/foundation.min.js"></script>
+		
+		<script>
+			$(document).foundation();
+
+			$(document).foundation('joyride', 'start');
+		</script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,261 @@
+/* ----------- toggle --------------------- */
+.btn {
+	display: block;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	right: 0;
+	margin: 1.25em 5% 0 0;
+	padding: 0.25em 2%;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 0.25em;
+	background-color: #5b5756;
+	background-image: -webkit-linear-gradient(top, #6b6766, #5b5756);
+	background-image:    -moz-linear-gradient(top, #6b6766, #5b5756);
+	background-image:     -ms-linear-gradient(top, #6b6766, #5b5756);
+	background-image:      -o-linear-gradient(top, #6b6766, #5b5756);
+	background-image:         linear-gradient(top, #6b6766, #5b5756);
+	
+	&:hover {
+		background-color: #7b7776;
+		background-image: -webkit-linear-gradient(top, #8b8786, #7b7776);
+		background-image:    -moz-linear-gradient(top, #8b8786, #7b7776);
+		background-image:     -ms-linear-gradient(top, #8b8786, #7b7776);
+		background-image:      -o-linear-gradient(top, #8b8786, #7b7776);
+		background-image:         linear-gradient(top, #8b8786, #7b7776);
+	}
+}
+
+
+
+/* --------- Header------------ */
+header {
+	color:#eee;
+	text-align: center;
+	background: #2b2726;
+	padding-bottom: 5em;
+}
+
+.logo {
+	float: left;
+	margin: 1.25em 0;
+	width: 200px;
+}
+
+#nav {
+	margin: 0;
+	position: absolute;
+	top: 5em;
+	right: 0;
+	left: 0;
+	z-index: 10;
+	list-style: none;
+	text-align: left;
+	
+	a {
+		border-bottom-width: 0;
+		background: #444;
+		height: 0;
+		line-height: 0;
+		display: block;
+		padding: 0 0 0 5%;
+		overflow: hidden;
+		color:#fff;
+		text-decoration: none;
+		-webkit-transition: 0.5s;
+		   -moz-transition: 0.5s;
+		    -ms-transition: 0.5s;
+		     -o-transition: 0.5s;
+		        transition: 0.5s;
+	}
+}
+
+/* --------- Submenu ------------ */
+.multi:after {
+	content: " \0025Bc";
+	font-size: 0.5em;
+}
+	
+#close a {
+	-webkit-transition: none;
+	   -moz-transition: none;
+	    -ms-transition: none;
+	     -o-transition: none;
+	        transition: none;
+}
+
+/* ----------- checkbox --------------------- */
+#toggle {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+#toggle:checked ~ nav #nav {
+	z-index: 101;
+	-webkit-box-shadow: 0px 3px 5px 0px #bbb;
+	   -moz-box-shadow: 0px 3px 5px 0px #bbb;
+	    -ms-box-shadow: 0px 3px 5px 0px #bbb;
+	     -o-box-shadow: 0px 3px 5px 0px #bbb;
+	        box-shadow: 0px 3px 5px 0px #bbb;
+
+	a {
+		line-height: 3em;
+		height: 3em;
+		border-bottom: 1px solid #999;
+		position: relative;
+		z-index: 1;	
+	}
+
+	#close {
+		position: relative;
+		z-index: 0;
+		
+		label {
+			background: transparent;
+			border-bottom: 0;
+			height: 202em;
+			position: absolute;
+			top: -101em;
+			bottom: -101em;
+			left: 0;
+			right: 0;
+			z-index: 0;
+		}
+	}
+
+	.submenu li,
+	.submenu a {
+		height: 0;
+		line-height: 0;
+		-webkit-transition: 0.5s;
+		   -moz-transition: 0.5s;
+		    -ms-transition: 0.5s;
+		     -o-transition: 0.5s;
+		        transition: 0.5s;
+	}
+
+	.submenu.open li,
+	.submenu.open a {
+		height: 3em;
+		line-height: 3em;
+	}
+	
+	.submenu a {
+		padding-left: 7%;
+		background: #555;
+	}
+}
+
+
+
+/* ----------- imports --------------------- */
+@import "style-3";
+
+
+/* ----------- media queries --------------------- */
+@media screen and (min-width: 48em) {
+	.btn {display: none;}
+	
+	#toggle:checked ~ nav #nav,
+	#nav {
+		top: 2em;
+		right: 2%;
+		left: 35%;
+		-webkit-box-shadow: 0 0 0 0;
+		   -moz-box-shadow: 0 0 0 0;
+		    -ms-box-shadow: 0 0 0 0;
+		     -o-box-shadow: 0 0 0 0;
+		        box-shadow: 0 0 0 0;
+		
+		li {display: inline; float: left;}
+		li.current a {color: #7b7776;}
+		
+		a {
+			line-height: 1em;
+			height: 1em;
+			display: inline;
+			float: right;
+			background: transparent;
+			padding: 0 1.15em;
+			border-bottom: 0;
+		}
+		
+		#close {display: none;}
+		
+		.submenu {
+			position: absolute;
+			left: -999em;
+		}
+	
+		li:hover {
+		
+			.submenu {
+				left: auto;
+				top: 1.05em;
+				background: #2b2726;
+				max-width: 14em;
+				
+				li {
+					border-bottom: 1px solid #999;
+				}
+				
+				a {
+					height: 3em;
+					line-height: 3em;
+					color: #eae8db;
+					background: #2b2726;
+					padding-right: 1.75em;
+					width: 14em;
+
+				-webkit-transition: 0;
+				   -moz-transition: 0;
+				    -ms-transition: 0;
+				     -o-transition: 0;
+				        transition: 0;
+				}
+
+				a:hover {color: #7b7776;}
+			}
+		}
+	}
+	.multi:after {
+		content: "";
+	}
+}
+
+
+
+
+@media screen and (min-width: 52.5em) {
+	#nav {
+		left: 33%;
+
+		a {padding: 0 1.5em;}
+	}
+}
+
+@media screen and (min-width: 64em) {
+	#nav {
+		left: 33%;
+
+		a {padding: 0 2.25em;}
+		.submenu {margin-left: 1.5em;}
+		.submenu a {padding-left: 5%;}
+	}
+}
+
+@media screen and (min-width: 75em) {
+	#nav {
+		left: 32%;
+
+		a {padding: 0 3.4em;}
+		.submenu {margin-left: 2.75em;}
+	}
+}
+
+
+
+
+// eof

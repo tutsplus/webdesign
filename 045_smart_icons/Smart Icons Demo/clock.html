@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta-->
+    <title>Smart icons | Iconic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- css-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/prettify.css">
+    <link rel="stylesheet" href="css/example.css"><!--[if IE 9]>
+    <link id="css-ie9" href="css/ie9.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+    <script src="js/vendor/modernizr.custom.js"></script>
+    <!-- Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+  </head>
+  <body class="subpage smart-icons demo">
+    <section>
+      <article class="head">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center text-muted">
+              <h6>Proof of Concept</h6>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h4>Iconic can tell time</h4>
+              <p>Smart icons come bundled with Javascript which makes the magic happen. All you need to do is add your icon as an image tag and Iconic does the heavy lifting. Your code is clean, your clock tells time and all is well.</p>
+              <p class="text-center"><img src="images/clock.svg" class="svg-inject clock"></p>
+            </div>
+          </div>
+          <div class="row code-samples">
+            <div class="col-md-6 col-md-offset-3">
+              <h5>HTML</h5>
+              <pre class="prettyprint text-left">&lt;img src=&quot;clock.svg&quot; class=&quot;svg-inject&quot;&gt;</pre>
+              <h5>JS</h5>
+              <pre class="prettyprint text-left">$('.svg-inject').svgInject();</pre>
+              <h5>SVG (from clock.svg)</h5>
+              <pre class="prettyprint text-left pre-scrollable">&lt;svg version=&quot;1.1&quot; class=&quot;iconic-clock&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot; width=&quot;384px&quot; height=&quot;384px&quot; viewBox=&quot;0 0 384 384&quot; enable-background=&quot;new 0 0 384 384&quot; xml:space=&quot;preserve&quot;&gt;
+  &lt;path class=&quot;iconic-clock-frame&quot;    d=&quot;M192,0C85.961,0,0,85.961,0,192s85.961,192,192,192s192-85.961,192-192S298.039,0,192,0zM315.037,315.037c-9.454,9.454-19.809,17.679-30.864,24.609l-14.976-25.939l-10.396,6l14.989,25.964c-23.156,12.363-48.947,19.312-75.792,20.216V336h-12v29.887c-26.845-0.903-52.636-7.854-75.793-20.217l14.989-25.963l-10.393-6l-14.976,25.938c-11.055-6.931-21.41-15.154-30.864-24.608s-17.679-19.809-24.61-30.864l25.939-14.976l-6-10.396l-25.961,14.99C25.966,250.637,19.017,224.846,18.113,198H48v-12H18.113c0.904-26.844,7.853-52.634,20.216-75.791l25.96,14.988l6.004-10.395L44.354,99.827c6.931-11.055,15.156-21.41,24.61-30.864s19.809-17.679,30.864-24.61l14.976,25.939l10.395-6L110.208,38.33C133.365,25.966,159.155,19.017,186,18.113V48h12V18.113c26.846,0.904,52.635,7.853,75.792,20.216l-14.991,25.965l10.395,6l14.978-25.942c11.056,6.931,21.41,15.156,30.865,24.611c9.454,9.454,17.679,19.808,24.608,30.863l-25.94,14.976l6,10.396l25.965-14.99c12.363,23.157,19.312,48.948,20.218,75.792H336v12h29.887c-0.904,26.845-7.853,52.636-20.216,75.792l-25.964-14.989l-6.002,10.396l25.941,14.978C332.715,295.229,324.491,305.583,315.037,315.037z&quot; /&gt;
+  &lt;line class=&quot;iconic-clock-hour-hand&quot; id=&quot;foo&quot; fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-width=&quot;18&quot; stroke-miterlimit=&quot;10&quot; x1=&quot;192&quot; y1=&quot;192&quot; x2=&quot;192&quot; y2=&quot;87.5&quot;/&gt;
+  &lt;line class=&quot;iconic-clock-minute-hand&quot; id=&quot;iconic-anim-clock-minute-hand&quot; fill=&quot;none&quot; stroke=&quot;#000000&quot; stroke-width=&quot;12&quot; stroke-miterlimit=&quot;10&quot; x1=&quot;192&quot; y1=&quot;192&quot; x2=&quot;192&quot; y2=&quot;54&quot;/&gt;
+  &lt;circle class=&quot;iconic-clock-axis&quot; cx=&quot;192&quot; cy=&quot;192&quot; r=&quot;9&quot;/&gt;
+  &lt;g class=&quot;iconic-clock-second-hand&quot; id=&quot;iconic-anim-clock-second-hand&quot;&gt;
+      &lt;line class=&quot;iconic-clock-second-hand-arm&quot; fill=&quot;none&quot; stroke=&quot;#D53A1F&quot; stroke-width=&quot;4&quot; stroke-miterlimit=&quot;10&quot; x1=&quot;192&quot; y1=&quot;192&quot; x2=&quot;192&quot; y2=&quot;28.5&quot;/&gt;
+      &lt;circle class=&quot;iconic-clock-second-hand-axis&quot; fill=&quot;#D53A1F&quot; cx=&quot;192&quot; cy=&quot;192&quot; r=&quot;4.5&quot;/&gt;
+  &lt;/g&gt;
+  &lt;defs&gt;
+    &lt;animateTransform
+          type=&quot;rotate&quot;
+          fill=&quot;remove&quot;
+          restart=&quot;always&quot;
+          calcMode=&quot;linear&quot;
+          accumulate=&quot;none&quot;
+          additive=&quot;sum&quot;
+          xlink:href=&quot;#iconic-anim-clock-hour-hand&quot;
+          repeatCount=&quot;indefinite&quot;
+          dur=&quot;43200s&quot;
+          to=&quot;360 192 192&quot;
+          from=&quot;0 192 192&quot;
+          attributeName=&quot;transform&quot;
+          attributeType=&quot;xml&quot;&gt;
+    &lt;/animateTransform&gt;
+
+    &lt;animateTransform
+          type=&quot;rotate&quot;
+          fill=&quot;remove&quot;
+          restart=&quot;always&quot;
+          calcMode=&quot;linear&quot;
+          accumulate=&quot;none&quot;
+          additive=&quot;sum&quot;
+          xlink:href=&quot;#iconic-anim-clock-minute-hand&quot;
+          repeatCount=&quot;indefinite&quot;
+          dur=&quot;3600s&quot;
+          to=&quot;360 192 192&quot;
+          from=&quot;0 192 192&quot;
+          attributeName=&quot;transform&quot;
+          attributeType=&quot;xml&quot;&gt;
+    &lt;/animateTransform&gt;
+
+    &lt;animateTransform
+          type=&quot;rotate&quot;
+          fill=&quot;remove&quot;
+          restart=&quot;always&quot;
+          calcMode=&quot;linear&quot;
+          accumulate=&quot;none&quot;
+          additive=&quot;sum&quot;
+          xlink:href=&quot;#iconic-anim-clock-second-hand&quot;
+          repeatCount=&quot;indefinite&quot;
+          dur=&quot;60s&quot;
+          to=&quot;360 192 192&quot;
+          from=&quot;0 192 192&quot;
+          attributeName=&quot;transform&quot;
+          attributeType=&quot;xml&quot;&gt;
+    &lt;/animateTransform&gt;
+  &lt;/defs&gt;
+  &lt;script  type=&quot;text/javascript&quot;&gt;
+  &lt;![CDATA[
+      var date = new Date;
+      var seconds = date.getSeconds();
+      var minutes = date.getMinutes();
+      var hours = date.getHours();
+      hours = (hours &gt; 12) ? hours - 12 : hours;
+
+      minutes = (minutes * 60) + seconds;
+      hours = (hours * 3600) + minutes;
+
+      document.querySelector('.iconic-clock-second-hand').setAttribute('transform', 'rotate('+360*(seconds/60)+',192,192)');
+      document.querySelector('.iconic-clock-minute-hand').setAttribute('transform', 'rotate('+360*(minutes/3600)+',192,192)');
+      document.querySelector('.iconic-clock-hour-hand').setAttribute('transform', 'rotate('+360*(hours/43200)+',192,192)');
+  ]]&gt;
+  &lt;/script&gt;
+&lt;/svg&gt;.
+
+</pre>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <div class="menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="pager">
+              <li class="text-center"><a data-toggle="modal" href="#modal-kickstarter" class="btn btn-default btn-kick btn-round">Get Iconic</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal-kickstarter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h2>Make it happen</h2>
+                  <p>We want you to have Iconic and we <em>definitely</em> want you to use it. There's just one thing you need to do to make this a reality. <a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="kick">Back Iconic on Kickstarter</a> and <a href="https://twitter.com/useiconic" class="tweet">spread the word</a>. OK, that's two things, but you get the point.</p>
+                  <p>In all seriousness, please help us get Iconic in your hands (figuratively). We know you'll love it.</p>
+                  <p>&nbsp;</p>
+                  <p><a href="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web" class="btn btn-kick btn-round">Back us on Kickstarter</a></p>
+                </div>
+                <div class="col-sm-6 embed-kickstarter">
+                  <iframe frameborder="0" height="380" width="220" src="http://www.kickstarter.com/projects/207474036/iconic-advanced-icons-for-the-modern-web/widget/card.html"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/vendor/jquery.svginject.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/prettify.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/site.js"></script>
+  </body>
+</html>
+<!-- Localized -->

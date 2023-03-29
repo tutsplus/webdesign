@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Layout</title>
+<style>
+section {
+	width: 90%;
+	margin: 0 auto;
+	background: #e89039;
+}
+
+aside {
+	background: #82aa3b;
+	text-align: center;
+}
+
+article {
+	background: #233135;
+	color: white;
+	padding: 20px;
+}
+
+img {
+	max-width: 100%;
+}
+
+p {
+	line-height: 1.5em;
+}
+a, a:visited, a:hover {
+	color: white;
+}
+
+/*media queries to kick this mean boy into action*/
+@media only screen and (min-width: 500px) {
+	
+	section {
+		display: table;
+	}
+	
+	aside {
+		display: table-cell;
+		width: 300px;
+		background: #82aa3b;
+		vertical-align: top;
+	}
+	
+	article {
+		display: table-cell;
+		vertical-align: top;
+	}
+	
+	
+}
+
+
+</style>
+</head>
+
+<body>
+
+<section>
+	<aside>
+	
+		<img src="300x250.gif" alt="">
+	
+	</aside>
+	
+	<article>
+	
+	<p>Fluid layouts are the perfect way to house our content at any viewport size. Text can flow as containers grow and shrink, images and even video and iframes can flex and squish too. But what if we have content which <em>shouldn't</em> alter dimensions? What about ad blocks, for example, which are often designed with very specific sizing in mind? Oddly enough, this is where table layouts come to the rescue..</p>
+	
+	<p>I was reminded of this recently when reading Tim Kadlec's <a href="http://www.implementingresponsivedesign.com/">Implementing Responsive Design</a>. It came just at the right time too; I was in the middle of a client project which needed just this approach (and I was busy butchering it with jQuery workarounds).</p>
+	
+	<p>Many websites depend on advertising revenue. However much you may dislike being barraged with web marketing imagery, without it you wouldn't have access to much of the free content you've become used to. Tuts+, for example, relies in part on advertising revenue to maintain its ever-growing team of writers and staff.</p>
+			
+	</article>
+</section>	
+
+</body>
+</html>

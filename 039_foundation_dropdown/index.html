@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
+
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+	<head>
+	
+		<meta charset="utf-8" />
+		
+		<meta name="viewport" content="width=device-width" />
+		
+		<title>Foundation 4 | Contact Form</title>
+		
+		<link rel="stylesheet" href="css/foundation.css" />
+		
+		<link rel="stylesheet" href="css/app.css" />
+		
+		<script src="js/vendor/custom.modernizr.js"></script>
+	
+	</head>
+	
+	<body>
+	
+		<section id="megaContainer" style="display:none">
+			
+			<div class="row">
+				
+				<div class="large-4 columns">
+					<p>Samuel Spade's jaw was long and bony, his chin a jutting v under the more flexible v of his mouth. His nostrils curved back to make another, smaller, v. His yellow-grey eyes were horizontal. The V motif was picked up again by thickish brows</p>
+				</div>
+				
+				<div class="large-4 columns">
+					<p>rising outward from twin creases above a hooked nose, and his pale brown hair grew down-from high flat temples-in a point on his forehead. He looked rather pleasantly like a blond Satan. He said to Effie Perine: "Yes, sweetheart?"</p>
+				</div>
+				
+				<div class="large-4 columns">
+					<p>She was a lanky sunburned girl whose tan dress of thin woolen stuff clung to her with an effect of dampness. Her eyes were brown and playful in a shiny boyish face.<br /><br />- The Maltese Falcon</p>
+				</div>
+				
+			</div>
+		
+		</section>
+	
+		<div class="row">
+		
+			<div class="large-10 columns large-centered">
+			
+				<a href="#" id="megaDrop">&plus;</a>
+			
+				<h2 class="title">Contact Form</h2>
+			
+				<form class="custom" onsubmit="return(false)">
+				
+					<div class="row">
+					
+						<div class="large-6 columns">
+						
+							<div class="row collapse">
+						
+								<div class="large-3 small-3 columns">
+						
+									<select>
+									
+										<option>Mr.</option>
+										
+										<option>Mrs.</option>
+										
+										<option>Miss.</option>
+										
+										<option>Ms.</option>
+										
+										<option>Dr.</option>
+									
+									</select>
+							
+								</div>
+							
+								<div class="large-9 small-9 columns">
+									
+									<input type="text" placeholder="Name" />
+									
+								</div>
+							
+							</div>
+							
+							<input type="email" placeholder="Email" />
+							
+							<select id="contactDropdown">
+							
+								<option DISABLED>How did you find us?</option>
+								
+								<option>Google</option>
+								
+								<option>A friend told me</option>
+								
+								<option>Not sure, where am I?</option>
+							
+							</select>
+						
+						</div>
+						
+						<div class="large-6 columns">
+						
+							<textarea placeholder="Message"></textarea>
+							
+							<div class="row">
+							
+								<div class="large-6 small-6 columns">
+							
+									<label class="has-tip"><span data-tooltip data-width="300" class="has-tip" title="Don't worry we won't really send you any spam this is just to display a checkbox.">Send me spam</span>&nbsp;&nbsp;
+							
+										<input type="checkbox" CHECKED style="display:none" />
+							
+									</label>
+							
+								</div>
+							
+								<div class="large-3 small-3 columns">
+							
+									<label>CC me?</label>
+							
+								</div>
+							
+								<div class="large-3 small-3 columns end">
+							
+									<div class="switch tiny">
+							
+										<input id="x" name="switch-x" type="radio" checked>
+							
+										<label for="x" onclick="">No</label>
+							
+										<input id="x1" name="switch-x" type="radio">
+							
+										<label for="x1" onclick="">yes</label>
+							
+										<span></span>
+							
+									</div>
+							
+								</div>
+							
+							</div>
+							
+							<input id="submitme" class="button small small-12 large-12" type="submit" value="Send Message" />
+							
+							<div id="progress" class="progress round" style="display:none"><span class="meter" style="width: 0%"></span></div>
+							
+							<div data-alert class="alert-box success" style="display:none">Success! Your message has been sent.
+								
+								<a href="#" class="close">&times;</a>
+							
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</form>
+			
+			</div>
+		
+		</div>
+		
+		<script src="js/vendor/jquery.js"></script>
+		
+		<script src="js/foundation.min.js"></script>
+		
+		<script>
+			$(document).foundation();
+			
+			$(document).ready(function() {
+				$('#megaDrop').click(function() {
+					$('#megaContainer').slideToggle(300,function(){
+						if ($(this).is(":hidden")) $("#megaDrop").html("&plus;");
+						else $("#megaDrop").html("&times;");
+					});
+					return false;
+				});
+				$('#submitme').click(function() {
+					$(this).fadeOut(500);
+					setTimeout(function() {
+					    $('#progress').fadeIn(500);
+					    $('#progress .meter').animate({width : '100%'},2000);
+					    setTimeout(function() {
+					    	$('#progress').fadeOut(500);
+					    	setTimeout(function() {
+								 $('.alert-box').fadeIn(500);
+							}, 500);
+					    }, 2500);
+					}, 500);
+				});
+				$('.close').click(function() {
+					$('.alert-box').fadeOut(500);
+					$('#progress .meter').css({width : '0%'});
+					setTimeout(function() {
+						$('input, textarea').not('input[type=submit]').val('');
+						$('#submitme').fadeIn(500);
+					}, 500);
+					
+					return false;
+				});
+			});
+		</script>
+		
+	</body>
+	
+</html>

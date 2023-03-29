@@ -1,0 +1,79 @@
+<svg version="1.0" class="iconic-thermometer"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
+	 height="128px" viewBox="0 0 40 128" enable-background="new 0 0 40 128" xml:space="preserve">
+	<path class="iconic-thermometer-container" d="M20,6c2.757,0,5,2.243,5,5v80.305v3.234l2.701,1.777C31.646,98.912,34,103.279,34,108c0,7.72-6.28,14-14,14
+			s-14-6.28-14-14c0-4.721,2.354-9.088,6.298-11.684L15,94.539v-3.234V11C15,8.243,17.243,6,20,6 M20,0C13.935,0,9,4.935,9,11
+			v80.305c-5.501,3.62-9,9.829-9,16.695c0,11.028,8.972,20,20,20c11.028,0,20-8.972,20-20c0-6.865-3.499-13.075-9-16.695V11
+			C31,4.935,26.065,0,20,0L20,0z"/>
+	<line class="iconic-thermometer-shaft iconic-thermometer-hot" id="iconic-anim-thermometer-shaft" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="20" y1="108" x2="20" y2="11" />
+	<circle class="iconic-thermometer-well iconic-thermometer-hot" cx="20" cy="108" r="12" />
+
+	<animate
+	    id="shaft-animate"
+	    attributeName= "y2"
+	    begin= "indefinite"
+	    dur="1s"
+	    xlink:href="#iconic-anim-thermometer-shaft"
+	    fill="freeze"
+	    calcMode="spline"
+	    keySplines="0.42 0 0.58 1"
+	    keyTimes="0;1"
+	    restart="whenNotActive"
+	/>
+
+	<script type="text/ecmascript">
+	<![CDATA[
+
+	    var shaft = document.querySelector('#iconic-anim-thermometer-shaft');
+	    var well = document.querySelector('.iconic-thermometer-well');
+	    var yOrigin2 = parseFloat(shaft.getAttribute('y2'));
+	    var yOrigin1 = parseFloat(shaft.getAttribute('y1'));
+	    var yPos = yOrigin2;
+	    var tempClass;
+
+	    window.addEventListener('hashchange', function() {
+        var hash = window.location.hash.substr(1);
+        goto(hash);
+	    }, false);
+
+	    function goto(amount) {
+	    	var shaftAnim = document.querySelector('#shaft-animate');
+
+				shaft.setAttribute('y2', yPos)
+
+        amount = parseFloat(amount)
+        if( isNaN( amount ) ) return;
+
+				if(amount>.9) {
+					tempClass="iconic-thermometer-hot";
+				} else if(amount>.5) {
+					tempClass="iconic-thermometer-warm";
+				} else if(amount>.2) {
+					tempClass="iconic-thermometer-chilly";
+				} else {
+					tempClass="iconic-thermometer-cold";
+				}
+
+        amount = 1 - amount;
+        amount = Math.min(Math.max(0, amount), 1);
+
+        var ry = ( amount * ( yOrigin1-yOrigin2 ) ) + yOrigin2;
+
+				/*
+				 * Unfortunately, Safari doesn't make life easy on us. We need to remove and re-initialize
+				 * the animation element for animations to start from the last end point.
+				 */
+        var ns =  shaftAnim.cloneNode(true);
+        ns.setAttribute( 'from', yPos )
+        ns.setAttribute( 'to', ry );
+
+        shaftAnim.parentNode.replaceChild(ns, shaftAnim);
+
+				well.setAttribute('class', 'iconic-thermometer-well ' + tempClass);
+				shaft.setAttribute('class', 'iconic-thermometer-shaft ' + tempClass);
+        ns.beginElement();
+        yPos = ry;
+
+	    }
+	]]>
+	</script>
+</svg>

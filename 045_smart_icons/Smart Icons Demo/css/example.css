@@ -1,0 +1,53 @@
+img,
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+.clock {
+  width: 400px;
+  /*Safari wants a width defined for max-width to kick in*/
+
+  max-width: 400px;
+  height: 400px;
+  /*Safari wants a height defined for max-height to kick in*/
+
+  max-height: 400px;
+}
+.thermometer {
+  max-height: 400px;
+}
+.iconic-thermometer-well.iconic-thermometer-hot {
+  fill: #B5001A;
+}
+.iconic-thermometer-well.iconic-thermometer-warm {
+  fill: #D05A28;
+}
+.iconic-thermometer-well.iconic-thermometer-chilly {
+  fill: #00D0A4;
+}
+.iconic-thermometer-well.iconic-thermometer-cold {
+  fill: #3F6CB5;
+}
+.iconic-thermometer-shaft.iconic-thermometer-hot {
+  stroke: #B5001A;
+}
+.iconic-thermometer-shaft.iconic-thermometer-warm {
+  stroke: #D05A28;
+}
+.iconic-thermometer-shaft.iconic-thermometer-chilly {
+  stroke: #00D0A4;
+}
+.iconic-thermometer-shaft.iconic-thermometer-cold {
+  stroke: #3F6CB5;
+}
+.iconic-thermometer-shaft,
+.iconic-thermometer-well {
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+body.subpage.demo article pre.prettyprint {
+  margin: 0;
+}
+body.subpage.demo .code-samples h5 {
+  margin: 20px 0 10px 0;
+}
