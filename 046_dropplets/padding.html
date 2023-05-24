@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS `padding` Property</title>
+</head>
+<body>
+<h1>CSS <code>padding</code> Property</h1>
+
+<p>The <code>padding</code> property in CSS sets the padding area on all four sides of an element's content box. It creates space around the content within the element and affects the layout and spacing of other elements around it.</p>
+
+<h2>Syntax</h2>
+
+<p>The <code>padding</code> property can be specified using one of the following syntax forms:</p>
+
+<ul>
+<li>Four values: <code>padding: top right bottom left;</code></li>
+<li>Three values: <code>padding: top horizontal bottom;</code></li>
+<li>Two values: <code>padding: vertical horizontal;</code></li>
+<li>One value: <code>padding: value;</code></li>
+</ul>
+
+<p>Each value can be expressed as an absolute or relative length, or using a percentage. Negative values are not allowed.</p>
+
+<h2>Values</h2>
+
+<ul>
+<li><strong><code>length</code></strong>: Specifies the padding as a fixed length, such as pixels (<code>px</code>), points (<code>pt</code>), or em units (<code>em</code>).</li>
+<li><strong><code>%</code></strong>: Specifies the padding as a percentage of the width of the containing block.</li>
+</ul>
+
+<h2>Examples</h2>
+
+<pre><code class="css">/* Applying the same padding to all sides */
+.box {
+  padding: 20px;
+}
+
+/* Applying different padding to each side */
+.box {
+  padding: 10px 20px 15px 30px;
+}
+
+/* Applying vertical and horizontal padding */
+.box {
+  padding: 10px 20px;
+}
+</code></pre>
+
+<h2>Remarks</h2>
+
+<ul>
+<li>The <code>padding</code> property applies to all types of elements, including block-level and inline-level elements.</li>
+<li>If the <code>box-sizing</code> property is set to <code>border-box</code>, the specified padding will be included in the total width and height of the element.</li>
+<li>Padding values contribute to the total dimensions of an element and may affect its position within the layout.</li>
+<li>The order of specifying values follows the clockwise direction, starting from the top.</li>
+<li>If fewer than four values are specified, they will be applied to the sides in the order top, right, bottom, and left.</li>
+</ul>
+
+<h2>Compatibility</h2>
+
+<p>The <code>padding</code> property is supported in all modern web browsers. It is also backward compatible with older browsers.</p>
+
+<p>For detailed information on browser compatibility and specific vendor prefixes, refer to the <a href="https://developer.mozilla.org/docs/Web/CSS/padding">MDN web documentation on <code>padding</code></a>.</p>
+
+<h2>Related Properties</h2>
+
+<ul>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/padding-top"><code>padding-top</code></a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/padding-right"><code>padding-right</code></a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/padding-bottom"><code>padding-bottom</code></a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/padding-left"><code>padding-left</code></a></li>
+</ul>
+
+<h2>Learn More</h2>
+
+<ul>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">CSS Box Model</a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/Layout_cookbook">CSS Layout</a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/CSS/CSS_Properties_Reference">CSS Properties</a></li>
+</ul>
+</body>
+</html>
